@@ -14,8 +14,8 @@ export function TrustedPartner() {
   return (
     <section className="section-tight trust-band">
       <div className="container trust-grid">
-        <p className="eyebrow">Trusted transformation partner</p>
-        <h2>We combine strategy, industry expertise, AI, data, and implementation to solve complex organizational challenges.</h2>
+        <p className="eyebrow">Impact systems partner</p>
+        <h2>We combine strategy, industry expertise, data, technology, and implementation to solve complex organizational challenges.</h2>
       </div>
     </section>
   );
@@ -25,7 +25,7 @@ export function Challenges() {
   return (
     <section id="solutions" className="section">
       <div className="container">
-        <Intro kicker="Challenges we solve" title="Most organizations do not need more tools. They need clearer systems." text="Royaviators helps teams move from scattered work to connected knowledge, intelligent workflows, and measurable outcomes." />
+        <Intro kicker="Challenges we solve" title="Most organizations do not need more tools. They need clearer systems." text="Royaviators helps teams move from scattered work to connected knowledge, better workflows, and measurable outcomes." />
         <div className="challenge-grid">
           {challenges.map((challenge) => (
             <div className="challenge-item" key={challenge}>
@@ -43,7 +43,7 @@ export function Services() {
   return (
     <section id="services" className="section surface-section">
       <div className="container">
-        <Intro kicker="Services" title="From AI strategy to intelligent operating systems." text="Our work connects high-level strategy with practical implementation, so transformation becomes operational rather than theoretical." />
+        <Intro kicker="Services" title="From strategic clarity to intelligent operating systems." text="Our work connects high-level strategy with practical implementation, so transformation becomes operational rather than theoretical." />
         <div className="grid-3">
           {servicePillars.map((pillar) => (
             <article className="service-card card" key={pillar.title}>
@@ -68,7 +68,7 @@ export function ImpactOS() {
           <p className="eyebrow">ImpactOS</p>
           <h2>One intelligent foundation. Tailored to every organization.</h2>
           <p>
-            ImpactOS is the reusable AI Workspace behind Royaviators transformation projects. It connects knowledge, CRM, outreach, documents, dashboards, automation, analytics, reporting, collaboration, and connectors into one tailored operating system.
+            ImpactOS is the reusable workspace behind Royaviators transformation projects. It connects knowledge, relationships, documents, dashboards, automation, analytics, reporting, collaboration, and selected AI capabilities in one tailored operating system.
           </p>
           <a className="btn btn-secondary" href="#contact">Explore an implementation</a>
         </div>
@@ -132,7 +132,7 @@ export function WhyRoyaviators() {
   return (
     <section id="about" className="section">
       <div className="container">
-        <Intro kicker="Why Royaviators" title="Not a traditional consultancy. Not a software vendor. A transformation partner." />
+        <Intro kicker="Why Royaviators" title="Not a traditional consultancy. Not a software vendor. A long-term transformation partner." />
         <div className="comparison-table">
           <div className="comparison-head"><strong>Traditional consultancy</strong><strong>Software vendor</strong><strong>Royaviators</strong></div>
           {comparison.map((row) => (
@@ -151,9 +151,9 @@ export function WhyRoyaviators() {
 
 export function Products() {
   return (
-    <section id="insights" className="section surface-section">
+    <section id="initiatives" className="section surface-section">
       <div className="container">
-        <Intro kicker="Powered by ImpactOS" title="Future products share the same intelligent foundation." />
+        <Intro kicker="Selected initiatives" title="Ideas being developed on the same systems foundation." text="These initiatives show the direction of our work. They are presented transparently according to their current stage." />
         <div className="grid-3">
           {products.map((product) => (
             <article className="product-card card" key={product.name}>
@@ -173,8 +173,8 @@ export function ContactCTA() {
     <section id="contact" className="section final-cta">
       <div className="container final-cta-card">
         <p className="eyebrow">Start the conversation</p>
-        <h2>Ready to build an intelligent organization?</h2>
-        <p>Let’s discuss how AI, automation, and intelligent systems can help your organization create measurable impact.</p>
+        <h2>The organizations creating the greatest impact will redesign how they work.</h2>
+        <p>Let’s explore how strategy, connected knowledge, automation, data, and carefully selected intelligent technologies can create measurable value for your organization.</p>
         <a className="btn btn-primary" href="mailto:hello@royaviators.com">Book a Strategy Session</a>
       </div>
     </section>
