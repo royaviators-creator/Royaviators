@@ -37,13 +37,13 @@ export const servicePillars = [
     title: "Strategy",
     description:
       "Clarify where systems, automation, and data can create measurable value.",
-    items: ["Systems Strategy", "Innovation Roadmaps", "Operating Model Design"],
+    items: ["Systems Strategy", "Operating Roadmaps", "Operating Model Design"],
   },
   {
     title: "Transformation",
     description:
       "Redesign processes, knowledge flows, and collaboration around real operational needs.",
-    items: ["Process Optimization", "Digital Transformation", "Change Enablement"],
+    items: ["Process Optimization", "Operational Change", "Change Enablement"],
   },
   {
     title: "Intelligent Systems",

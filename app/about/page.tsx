@@ -9,9 +9,9 @@ import {
 import { aboutReasons, impactFramework, principles } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "About | Royaviators",
+  title: "About",
   description:
-    "Royaviators exists to help organizations turn operational complexity into clearer systems, better decisions, and measurable impact.",
+    "Royaviators helps organizations turn complexity into clearer systems, better decisions, and measurable impact.",
 };
 
 export default function AboutPage() {
@@ -20,7 +20,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About Royaviators"
         title="Built for organizations that need clarity, trust, and measurable progress."
-        text="Royaviators is an impact systems consultancy. We help organizations improve the systems behind their operations, knowledge, decision-making, and transformation."
+        text="Royaviators is an impact systems consultancy for operations, knowledge, decisions, and long-term progress."
       />
 
       <section className="section">
@@ -43,7 +43,7 @@ export default function AboutPage() {
           <SectionIntro
             eyebrow="Principles"
             title="The standard is calm, useful, and durable."
-            text="Royaviators avoids exaggerated claims and generic technology language. The work is judged by whether it helps organizations operate with more clarity and accountability."
+            text="The work is judged by whether organizations operate with more clarity and accountability."
           />
           <ul className="principles-list">
             {principles.map((principle) => (
@@ -58,7 +58,7 @@ export default function AboutPage() {
           <SectionIntro
             eyebrow="Our way of working"
             title="The Royaviators Impact Framework."
-            text="A practical sequence for understanding complexity, connecting the right parts of the organization, and improving the system over time."
+            text="A practical sequence for understanding complexity and improving the system over time."
           />
           <div className="framework-grid">
             {impactFramework.map((step, index) => (

@@ -7,9 +7,9 @@ import {
 } from "@/components/PageScaffold";
 
 export const metadata: Metadata = {
-  title: "Contact | Royaviators",
+  title: "Contact",
   description:
-    "Book a Royaviators strategy session to discuss organizational systems, transformation, and measurable impact.",
+    "Book a Royaviators strategy session to discuss systems, operations, and measurable impact.",
 };
 
 export default function ContactPage() {
@@ -18,7 +18,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact"
         title="Book a strategy session."
-        text="A focused conversation about your organization, the complexity you are managing, and where better systems could improve decisions and measurable progress."
+        text="A focused conversation about complexity, better systems, and measurable progress."
       />
 
       <section className="section contact-section">
@@ -27,7 +27,7 @@ export default function ContactPage() {
             <SectionIntro
               eyebrow="Strategy session"
               title="Start with the organizational question."
-              text="Share a little about your context. Royaviators is based in The Netherlands and works with organizations internationally."
+              text="Share a little about your context. Royaviators is based in The Netherlands and works internationally."
             />
             <div className="contact-note">
               <strong>Location</strong>

@@ -16,9 +16,9 @@ import {
 } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "ImpactOS | Royaviators",
+  title: "ImpactOS",
   description:
-    "ImpactOS is the operating foundation Royaviators uses to connect knowledge, people, processes, data, automation, workflows, insights, and reporting.",
+    "ImpactOS connects knowledge, people, processes, data, workflows, insights, and reporting for measurable organizational impact.",
 };
 
 export default function ImpactOSPage() {
@@ -27,7 +27,7 @@ export default function ImpactOSPage() {
       <PageHero
         eyebrow="ImpactOS"
         title="The operating system for measurable organizational impact."
-        text="ImpactOS helps organizations connect knowledge, work, data, and reporting into one practical operating model. Every implementation is tailored to the organization, its sector, and its governance needs."
+        text="ImpactOS connects knowledge, work, data, and reporting into one practical operating model, tailored to each organization."
         ctaLabel="Book a Strategy Session"
         ctaHref="/contact"
       />
@@ -37,11 +37,11 @@ export default function ImpactOSPage() {
           <SectionIntro
             eyebrow="The organizational challenge"
             title="Fragmented systems slow down good organizations."
-            text="Many teams have strong people and serious missions, but their work is spread across documents, spreadsheets, inboxes, dashboards, and informal knowledge. Leaders spend too much time reconciling information and too little time improving decisions."
+            text="Strong teams often work across documents, spreadsheets, inboxes, dashboards, and informal knowledge. Leaders spend too much time reconciling information."
           />
           <div className="insight-panel">
             <p>
-              ImpactOS is designed around the way organizations operate: knowledge, people, processes, data, decisions, and evidence. It gives teams a clearer way to coordinate work and measure progress.
+              ImpactOS is designed around how organizations operate: knowledge, people, processes, data, decisions, and evidence.
             </p>
           </div>
         </div>
@@ -52,7 +52,7 @@ export default function ImpactOSPage() {
           <SectionIntro
             eyebrow="The ImpactOS operating model"
             title="A connected foundation for work, decisions, and impact."
-            text="The model is simple enough for leadership alignment and structured enough for implementation."
+            text="Simple enough for leadership alignment. Structured enough for implementation."
           />
           <ImpactOperatingDiagram />
         </div>
@@ -62,7 +62,7 @@ export default function ImpactOSPage() {
         <div className="container">
           <SectionIntro
             eyebrow="Core capabilities"
-            title="Built around the operating needs organizations return to every day."
+            title="Built around daily operating needs."
           />
           <div className="page-grid three">
             {coreCapabilities.map((capability) => {
@@ -83,7 +83,7 @@ export default function ImpactOSPage() {
         <div className="container">
           <SectionIntro
             eyebrow="Industry adaptations"
-            title="One operating model, adapted to different organizational realities."
+            title="One operating model, adapted by sector."
           />
           <div className="page-grid three">
             {industryAdaptations.map((industry) => {
@@ -104,7 +104,7 @@ export default function ImpactOSPage() {
         <div className="container">
           <SectionIntro
             eyebrow="Implementation journey"
-            title="A practical path from complexity to measurable progress."
+            title="A practical path to measurable progress."
           />
           <div className="journey-grid">
             {implementationJourney.map((step, index) => (
@@ -123,7 +123,7 @@ export default function ImpactOSPage() {
           <SectionIntro
             eyebrow="Security and governance"
             title="Every implementation is tailored to the organization."
-            text="ImpactOS is not installed as a generic product. It is configured around governance, privacy, access, ownership, and the operating reality of each client."
+            text="ImpactOS is configured around governance, privacy, access, ownership, and operating reality."
           />
           <div className="page-grid three">
             {securityPrinciples.map((principle) => {
