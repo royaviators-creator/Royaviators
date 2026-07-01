@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./enhancements.css";
 
 export const metadata: Metadata = {
-  title: "Royaviators — AI Impact Consultancy",
+  title: "Royaviators — Impact Systems Consultancy",
   description:
-    "Royaviators helps organizations create measurable economic, social, and environmental impact through AI, automation, data, and innovation.",
+    "Royaviators helps organizations improve operations, knowledge, decision-making, and measurable impact through strategy, connected systems, automation, and data.",
   metadataBase: new URL("https://royaviators.com"),
   openGraph: {
-    title: "Royaviators — AI Impact Consultancy",
+    title: "Royaviators — Impact Systems Consultancy",
     description:
-      "Building intelligent organizations for a more sustainable future.",
+      "Turn complexity into measurable impact through better systems, clearer decisions, and practical transformation.",
     type: "website",
     locale: "en_US",
     siteName: "Royaviators",
