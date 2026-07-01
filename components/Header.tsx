@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
+import logo from "@/LOGO.jpeg";
 import { navItems } from "@/lib/content";
 
 export function Header() {
@@ -6,7 +8,14 @@ export function Header() {
     <header className="site-header">
       <div className="container header-inner">
         <Link href="/" className="brand" aria-label="Royaviators home">
-          <span className="brand-mark">R</span>
+          <Image
+            className="brand-mark"
+            src={logo}
+            alt="Royaviators logo"
+            width={40}
+            height={40}
+            priority
+          />
           <span>Royaviators</span>
         </Link>
 
