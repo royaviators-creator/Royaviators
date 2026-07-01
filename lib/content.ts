@@ -1,16 +1,17 @@
 import {
   BarChart3,
-  Bot,
-  Building2,
+  Compass,
   Database,
-  FileText,
+  Gauge,
   GraduationCap,
+  Handshake,
   Landmark,
   Leaf,
   Network,
   Plane,
   Sprout,
   Waves,
+  Workflow,
 } from "lucide-react";
 
 export const navItems = [
@@ -35,68 +36,73 @@ export const servicePillars = [
   {
     title: "Strategy",
     description:
-      "Define where technology, automation, and data can create measurable business and impact value.",
-    items: ["Technology Strategy", "Innovation Roadmaps", "Operating Model Design"],
+      "Clarify where systems, automation, and data can create measurable value.",
+    items: ["Systems Strategy", "Innovation Roadmaps", "Operating Model Design"],
   },
   {
     title: "Transformation",
     description:
-      "Redesign processes, knowledge flows, and collaboration systems around real operational needs.",
+      "Redesign processes, knowledge flows, and collaboration around real operational needs.",
     items: ["Process Optimization", "Digital Transformation", "Change Enablement"],
   },
   {
     title: "Intelligent Systems",
     description:
-      "Build connected workspaces, dashboards, automations, and assistants that help organizations work smarter.",
-    items: ["Intelligent Assistants", "Knowledge Systems", "Analytics & Reporting"],
+      "Build connected workspaces, dashboards, and automations that support better decisions.",
+    items: ["Knowledge Systems", "Automation", "Analytics & Reporting"],
   },
 ];
 
 export const impactModules = [
-  { label: "Intelligent Assistant", icon: Bot },
-  { label: "Knowledge Hub", icon: Database },
-  { label: "CRM", icon: Network },
-  { label: "Automation", icon: Sprout },
-  { label: "Dashboards", icon: BarChart3 },
-  { label: "Documents", icon: FileText },
+  { label: "Knowledge", icon: Database },
+  { label: "People", icon: Network },
+  { label: "Processes", icon: Workflow },
+  { label: "Data", icon: BarChart3 },
+];
+
+export const operatingOutputs = [
+  "Automation",
+  "Workflows",
+  "Insights",
+  "Reporting",
 ];
 
 export const industries = [
   {
     name: "Aviation",
     icon: Plane,
-    description:
-      "Airport operations, airlines, air navigation, safety, training, and operational intelligence.",
+    focus: "Operations, safety, training, and decision support.",
+    description: "Systems for complex operational environments.",
   },
   {
     name: "Sustainable Tourism",
     icon: Leaf,
-    description:
-      "Destination management, ethical businesses, community engagement, and impact measurement.",
+    focus: "Destination operations and community impact.",
+    description: "Tools for responsible growth and measurable local value.",
   },
   {
     name: "Climate & Ocean",
     icon: Waves,
-    description:
-      "MRV, environmental monitoring, research collaboration, grants, and impact reporting.",
+    focus: "MRV, research, partnerships, and reporting.",
+    description: "Connected evidence systems for environmental work.",
   },
   {
     name: "NGOs & Foundations",
     icon: Sprout,
-    description:
-      "Donor management, outreach, knowledge systems, reporting, and program operations.",
+    focus: "Programs, donors, reporting, and field knowledge.",
+    description: "Operational systems for mission-driven teams.",
   },
   {
     name: "Universities",
     icon: GraduationCap,
-    description:
-      "Research collaboration, knowledge hubs, student engagement, and project intelligence.",
+    focus: "Research collaboration and knowledge infrastructure.",
+    description: "Shared systems for projects, partners, and learning.",
   },
   {
     name: "Public Sector",
     icon: Landmark,
-    description:
-      "Digital transformation, citizen services, process optimization, and data-informed decisions.",
+    focus: "Services, processes, and data-informed decisions.",
+    description: "Practical transformation for public organizations.",
   },
 ];
 
@@ -123,16 +129,36 @@ export const products = [
   },
 ];
 
+export const trustCapabilities = [
+  {
+    title: "Operational Understanding",
+    description:
+      "We start with how work actually happens: pressure, accountability, constraints, and the people responsible for outcomes.",
+    icon: Compass,
+  },
+  {
+    title: "Connected Systems",
+    description:
+      "Strategy, knowledge, processes, and data are designed as one operating environment rather than isolated tools.",
+    icon: Workflow,
+  },
+  {
+    title: "Measurable Progress",
+    description:
+      "Every engagement is tied to clear indicators, better decisions, and evidence leadership can use.",
+    icon: Gauge,
+  },
+  {
+    title: "Long-Term Partnership",
+    description:
+      "We build with internal teams, transfer knowledge, and keep improving systems after launch.",
+    icon: Handshake,
+  },
+];
+
 export const proofPoints = [
   "12+ years in aviation operations",
   "Business administration, data, and transformation expertise",
   "Experience across aviation, tourism, and sustainability",
   "Built around practical implementation, not presentation slides",
-];
-
-export const comparison = [
-  ["Delivers advice", "Sells products", "Delivers transformation"],
-  ["Generic frameworks", "Generic software", "Tailored intelligent systems"],
-  ["Ends after project", "Ends after implementation", "Long-term partnership"],
-  ["Strategy-focused", "Product-focused", "Outcome-focused"],
 ];
