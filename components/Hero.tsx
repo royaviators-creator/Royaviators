@@ -3,10 +3,10 @@ export function Hero() {
     <section className="hero">
       <div className="container hero-grid">
         <div className="hero-copy">
-          <p className="eyebrow">AI Impact Consultancy</p>
-          <h1>Building intelligent organizations for a more sustainable future.</h1>
+          <p className="eyebrow">Impact Systems Consultancy</p>
+          <h1>Turn complexity into measurable impact.</h1>
           <p className="hero-subtitle">
-            Royaviators partners with aviation, tourism, climate, ocean, public sector, and mission-driven organizations to design AI-powered operating systems that improve decisions, operations, and measurable impact.
+            Royaviators helps aviation, tourism, climate, ocean, public sector, and mission-driven organizations improve operations, knowledge, and decision-making through connected systems built for lasting impact.
           </p>
           <div className="hero-actions">
             <a className="btn btn-primary" href="#contact">
@@ -18,10 +18,10 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="hero-system" aria-label="Abstract ImpactOS system diagram">
+        <div className="hero-system" aria-label="ImpactOS connected operating system diagram">
           <div className="system-card primary-node">
             <span>ImpactOS</span>
-            <strong>AI Workspace</strong>
+            <strong>Intelligent Workspace</strong>
           </div>
           <div className="system-orbit orbit-one">Knowledge</div>
           <div className="system-orbit orbit-two">Automation</div>
