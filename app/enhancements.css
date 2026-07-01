@@ -4,14 +4,18 @@
 @media (prefers-reduced-motion:no-preference){
   .hero-copy{animation:revealUp .8s ease both}
   .trust-grid,.section-intro,.impactos-copy,.impactos-diagram,.industry-card,.capability-card,.final-cta-inner{animation:revealUp .8s ease both}
+  .page-hero-inner,.feature-card,.industry-link-card,.large-industry-card,.pillar-row,.journey-card,.framework-step,.insight-card,.contact-form,.page-cta-inner{animation:revealUp .8s ease both}
   .diagram-connector:after{animation:lineFlow 2.8s ease-in-out infinite}
+  .model-line:after{animation:lineFlow 2.8s ease-in-out infinite}
   .diagram-connector:nth-of-type(4):after{animation-delay:.45s}
   .diagram-connector:nth-of-type(6):after{animation-delay:.9s}
+  .model-line:nth-of-type(4):after{animation-delay:.45s}
+  .model-line:nth-of-type(6):after{animation-delay:.9s}
 }
 
 .hero h1{text-wrap:balance}
 .hero-subtitle{text-wrap:pretty}
-.trust-grid h2,.section-intro h2,.final-cta h2{text-wrap:balance}
+.trust-grid h2,.section-intro h2,.final-cta h2,.page-hero h1,.page-cta h2{text-wrap:balance}
 
 .industry-card:hover .icon-wrap{transform:translateY(-3px)}
 .icon-wrap{transition:transform .28s ease,background .28s ease}
@@ -21,6 +25,10 @@
 .impactos-diagram:hover .diagram-core,.impactos-diagram:hover .diagram-impact{transform:translateY(-2px)}
 
 .brand-mark{display:block!important;color:transparent!important}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}
+}
 
 @media(max-width:860px){
   .hero h1{text-wrap:initial}

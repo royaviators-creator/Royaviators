@@ -21,15 +21,15 @@ export function Header() {
 
         <nav className="desktop-nav" aria-label="Main navigation">
           {navItems.map((item) => (
-            <a key={item.href} href={item.href}>
+            <Link key={item.href} href={item.href}>
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
-        <a className="btn btn-primary header-cta" href="#contact">
+        <Link className="btn btn-primary header-cta" href="/contact">
           Book a Strategy Session
-        </a>
+        </Link>
       </div>
     </header>
   );
