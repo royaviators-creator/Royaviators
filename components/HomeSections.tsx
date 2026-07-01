@@ -1,4 +1,13 @@
-import { challenges, servicePillars, impactModules, industries, approach, products, proofPoints, comparison } from "@/lib/content";
+import {
+  approach,
+  challenges,
+  impactModules,
+  industries,
+  products,
+  proofPoints,
+  servicePillars,
+  trustCapabilities,
+} from "@/lib/content";
 
 function Intro({ kicker, title, text }: { kicker: string; title: string; text?: string }) {
   return (
@@ -64,21 +73,32 @@ export function ImpactOS() {
   return (
     <section id="impactos" className="section dark-section">
       <div className="container impactos-grid">
-        <div>
+        <div className="impactos-copy">
           <p className="eyebrow">ImpactOS</p>
           <h2>One intelligent foundation. Tailored to every organization.</h2>
           <p>
-            ImpactOS is the reusable workspace behind Royaviators transformation projects. It connects knowledge, relationships, documents, dashboards, automation, analytics, reporting, collaboration, and selected AI capabilities in one tailored operating system.
+            ImpactOS is the reusable workspace behind Royaviators transformation projects. It connects knowledge, relationships, workflows, dashboards, reporting, and carefully selected intelligent capabilities in one tailored operating system.
           </p>
           <a className="btn btn-secondary" href="#contact">Explore an implementation</a>
         </div>
-        <div className="module-grid">
+        <div
+          className="operating-system-map"
+          role="img"
+          aria-label="ImpactOS operating system layers"
+        >
+          <div className="os-core">
+            <span>Core</span>
+            <strong>ImpactOS</strong>
+          </div>
           {impactModules.map((module) => {
             const Icon = module.icon;
             return (
               <div className="module-card" key={module.label}>
-                <Icon size={22} />
-                <span>{module.label}</span>
+                <div className="module-icon"><Icon size={22} aria-hidden="true" /></div>
+                <div>
+                  <strong>{module.label}</strong>
+                  <span>{module.detail}</span>
+                </div>
               </div>
             );
           })}
@@ -98,7 +118,10 @@ export function Industries() {
             const Icon = industry.icon;
             return (
               <article className="industry-card card" key={industry.name}>
-                <div className="icon-wrap"><Icon size={24} /></div>
+                <div className="industry-card-top">
+                  <div className="icon-wrap"><Icon size={24} aria-hidden="true" /></div>
+                  <span>{industry.focus}</span>
+                </div>
                 <h3>{industry.name}</h3>
                 <p>{industry.description}</p>
               </article>
@@ -133,16 +156,24 @@ export function WhyRoyaviators() {
     <section id="about" className="section">
       <div className="container">
         <Intro kicker="Why Royaviators" title="Not a traditional consultancy. Not a software vendor. A long-term transformation partner." />
-        <div className="comparison-table">
-          <div className="comparison-head"><strong>Traditional consultancy</strong><strong>Software vendor</strong><strong>Royaviators</strong></div>
-          {comparison.map((row) => (
-            <div className="comparison-row" key={row.join("-")}>
-              {row.map((cell) => <span key={cell}>{cell}</span>)}
-            </div>
-          ))}
+        <div className="capability-grid">
+          {trustCapabilities.map((capability) => {
+            const Icon = capability.icon;
+            return (
+              <article className="capability-card" key={capability.title}>
+                <Icon size={24} aria-hidden="true" />
+                <h3>{capability.title}</h3>
+                <p>{capability.description}</p>
+              </article>
+            );
+          })}
         </div>
         <div className="proof-grid">
-          {proofPoints.map((point) => <div key={point} className="proof-card">{point}</div>)}
+          {proofPoints.map((point) => (
+            <div key={point} className="proof-card">
+              {point}
+            </div>
+          ))}
         </div>
       </div>
     </section>

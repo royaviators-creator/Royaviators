@@ -18,18 +18,35 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="hero-system" aria-label="ImpactOS connected operating system diagram">
-          <div className="system-card primary-node">
-            <span>ImpactOS</span>
-            <strong>Intelligent Workspace</strong>
+        <div
+          className="hero-system"
+          role="img"
+          aria-label="ImpactOS connected operating system diagram"
+        >
+          <div className="system-shell">
+            <div className="system-node system-node-primary">
+              <span>ImpactOS</span>
+              <strong>Operating System</strong>
+            </div>
+            <div className="system-node node-knowledge">
+              <span>01</span>
+              <strong>Knowledge</strong>
+            </div>
+            <div className="system-node node-operations">
+              <span>02</span>
+              <strong>Operations</strong>
+            </div>
+            <div className="system-node node-data">
+              <span>03</span>
+              <strong>Data</strong>
+            </div>
+            <div className="system-node node-decisions">
+              <span>04</span>
+              <strong>Decisions</strong>
+            </div>
+            <div className="system-path path-horizontal" />
+            <div className="system-path path-vertical" />
           </div>
-          <div className="system-orbit orbit-one">Knowledge</div>
-          <div className="system-orbit orbit-two">Automation</div>
-          <div className="system-orbit orbit-three">Data</div>
-          <div className="system-orbit orbit-four">Decisions</div>
-          <div className="system-line line-a" />
-          <div className="system-line line-b" />
-          <div className="system-line line-c" />
         </div>
       </div>
     </section>
