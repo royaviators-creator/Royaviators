@@ -1,0 +1,162 @@
+:root {
+  --midnight: #0f172a;
+  --slate: #64748b;
+  --deep-slate: #334155;
+  --surface: #f8fafc;
+  --mist: #f1f5f9;
+  --border: #e2e8f0;
+  --white: #ffffff;
+  --ocean: #2563eb;
+  --emerald: #10b981;
+  --amber: #f59e0b;
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --shadow-soft: 0 24px 80px rgba(15, 23, 42, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--midnight);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.container {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.section {
+  padding: 112px 0;
+}
+
+.section-tight {
+  padding: 72px 0;
+}
+
+.eyebrow {
+  color: var(--ocean);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.05em;
+}
+
+h1 {
+  max-width: 920px;
+  font-size: clamp(48px, 8vw, 96px);
+  line-height: 0.96;
+}
+
+h2 {
+  max-width: 840px;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1;
+}
+
+h3 {
+  font-size: 24px;
+  line-height: 1.15;
+}
+
+p {
+  color: var(--slate);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 700;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--midnight);
+  color: var(--white);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.2);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--midnight);
+  border: 1px solid var(--border);
+}
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.02);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+@media (max-width: 860px) {
+  .section {
+    padding: 72px 0;
+  }
+
+  .grid-3,
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  p {
+    font-size: 16px;
+  }
+}
