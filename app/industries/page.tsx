@@ -10,9 +10,9 @@ import {
 import { industryAdaptations } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Industries | Royaviators",
+  title: "Industries",
   description:
-    "Royaviators works with aviation, sustainable tourism, climate and ocean, NGOs, universities, and public sector organizations.",
+    "Royaviators works with aviation, sustainable tourism, climate, NGOs, universities, and public sector organizations.",
 };
 
 export default function IndustriesPage() {
@@ -21,7 +21,7 @@ export default function IndustriesPage() {
       <PageHero
         eyebrow="Industries"
         title="Systems consulting for sectors where decisions carry weight."
-        text="Royaviators works with organizations whose work depends on coordination, evidence, accountability, and long-term trust."
+        text="Royaviators works where coordination, evidence, accountability, and long-term trust matter."
         ctaLabel="Book a Strategy Session"
         ctaHref="/contact"
       />
@@ -30,7 +30,7 @@ export default function IndustriesPage() {
         <div className="container">
           <SectionIntro
             eyebrow="Sector focus"
-            title="Each industry has its own pressures. The operating challenge is often familiar."
+            title="Different pressures. Familiar operating challenges."
           />
           <div className="page-grid three">
             {industryAdaptations.map((industry) => {
