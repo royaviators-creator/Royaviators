@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowRight, BarChart3, BrainCircuit, Building2, Check, Compass, Database, Globe2, GraduationCap, Leaf, Network, Plane, ShipWheel, Sparkles, Workflow } from "lucide-react";
 
 const industries = [
@@ -11,11 +12,20 @@ const industries = [
 
 const modules = ["AI Assistant", "Knowledge Hub", "CRM", "Outreach", "Dashboards", "Analytics", "Automation", "Connectors", "Reporting", "Collaboration"];
 
+function Brand({ footer = false }: { footer?: boolean }) {
+  return (
+    <a className={`brand ${footer ? "brand-footer" : ""}`} href="#top" aria-label="Royaviators home">
+      <Image className="brand-mark" src="/LOGO.jpeg" alt="" width={44} height={44} priority={!footer} />
+      <span className="brand-name">Royaviators</span>
+    </a>
+  );
+}
+
 export default function HomePage() {
   return (
     <main>
       <header className="nav shell">
-        <a className="brand" href="#top" aria-label="Royaviators home">Royaviators<span>.</span></a>
+        <Brand />
         <nav className="navlinks" aria-label="Primary navigation">
           <a href="#solutions">Solutions</a><a href="#impactos">ImpactOS</a><a href="#services">Services</a><a href="#industries">Industries</a><a href="#about">About</a>
         </nav>
@@ -29,7 +39,7 @@ export default function HomePage() {
         <div className="actions"><a className="button" href="#contact">Book a strategy session <ArrowRight size={18} /></a><a className="text-link" href="#impactos">Explore ImpactOS <ArrowRight size={17} /></a></div>
         <div className="system-map" aria-label="Royaviators transformation system">
           <div className="map-node muted">People</div><div className="map-node muted">Knowledge</div><div className="map-node muted">Processes</div><div className="map-line" />
-          <div className="map-core"><Network size={24} /><strong>Royaviators</strong><span>Strategy + intelligent systems</span></div>
+          <div className="map-core"><Image className="map-logo" src="/LOGO.jpeg" alt="Royaviators symbol" width={44} height={44} /><strong>Royaviators</strong><span>Strategy + intelligent systems</span></div>
           <div className="map-line" /><div className="map-node accent">Better decisions</div><div className="map-node accent">Stronger operations</div><div className="map-node accent">Measurable impact</div>
         </div>
       </section>
@@ -67,7 +77,7 @@ export default function HomePage() {
 
       <section className="cta" id="contact"><div className="shell"><div className="eyebrow light">Start with the challenge, not the technology</div><h2>Ready to build a more intelligent organization?</h2><p>Let’s explore where connected knowledge, AI, automation, and data can create meaningful value for your organization.</p><a className="button light-button" href="mailto:hello@royaviators.com">Book a strategy session <ArrowRight size={18}/></a></div></section>
 
-      <footer className="footer shell"><div><a className="brand" href="#top">Royaviators<span>.</span></a><p>Intelligent systems for measurable impact.</p></div><div><strong>Explore</strong><a href="#services">Services</a><a href="#impactos">ImpactOS</a><a href="#industries">Industries</a></div><div><strong>Company</strong><a href="#about">About</a><a href="#contact">Contact</a><a href="#">Insights</a></div><div className="footer-end">© 2026 Royaviators<br/>The Netherlands</div></footer>
+      <footer className="footer shell"><div><Brand footer /><p>Intelligent systems for measurable impact.</p></div><div><strong>Explore</strong><a href="#services">Services</a><a href="#impactos">ImpactOS</a><a href="#industries">Industries</a></div><div><strong>Company</strong><a href="#about">About</a><a href="#contact">Contact</a><a href="#">Insights</a></div><div className="footer-end">© 2026 Royaviators<br/>The Netherlands</div></footer>
     </main>
   );
 }
