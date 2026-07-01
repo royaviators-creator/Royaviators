@@ -9,9 +9,9 @@ import {
 import { insightCategories, placeholderArticles } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Insights | Royaviators",
+  title: "Insights",
   description:
-    "Royaviators insights will cover aviation, sustainable tourism, climate, automation, knowledge systems, and transformation.",
+    "Royaviators insights will cover aviation, sustainable tourism, climate, automation, knowledge systems, and operations.",
 };
 
 export default function InsightsPage() {
@@ -20,7 +20,7 @@ export default function InsightsPage() {
       <PageHero
         eyebrow="Insights"
         title="Perspectives on systems, transformation, and measurable impact."
-        text="This section is structured for original Royaviators thinking. Articles will be added as they are written and reviewed."
+        text="A home for original Royaviators thinking as articles are written and reviewed."
       />
 
       <section className="section">
@@ -28,7 +28,7 @@ export default function InsightsPage() {
           <SectionIntro
             eyebrow="Categories"
             title="A focused editorial architecture for future publishing."
-            text="No fake publications, borrowed credibility, or artificial bylines. The structure is ready for real articles."
+            text="No fake publications, borrowed credibility, or artificial bylines."
           />
           <div className="category-cloud" aria-label="Insight categories">
             {insightCategories.map((category) => (
@@ -43,7 +43,7 @@ export default function InsightsPage() {
           <SectionIntro
             eyebrow="Planned articles"
             title="Editorial placeholders for production content."
-            text="These entries define the intended content direction without claiming publication history."
+            text="Planned topics, presented without claiming publication history."
           />
           <div className="page-grid two">
             {placeholderArticles.map((article) => (
