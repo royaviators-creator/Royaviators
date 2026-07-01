@@ -19,13 +19,13 @@ export const navItems = [
   { label: "Services", href: "#services" },
   { label: "Industries", href: "#industries" },
   { label: "About", href: "#about" },
-  { label: "Insights", href: "#insights" },
+  { label: "Initiatives", href: "#initiatives" },
 ];
 
 export const challenges = [
   "Disconnected tools and fragmented knowledge",
   "Manual workflows slowing teams down",
-  "AI initiatives without operational strategy",
+  "Technology initiatives without operational strategy",
   "Sustainability goals without measurable systems",
   "Complex reporting across funders, partners, and leadership",
   "Decision-making based on scattered information",
@@ -35,8 +35,8 @@ export const servicePillars = [
   {
     title: "Strategy",
     description:
-      "Define where AI, automation, and data can create measurable business and impact value.",
-    items: ["AI Strategy", "Innovation Roadmaps", "Operating Model Design"],
+      "Define where technology, automation, and data can create measurable business and impact value.",
+    items: ["Technology Strategy", "Innovation Roadmaps", "Operating Model Design"],
   },
   {
     title: "Transformation",
@@ -47,13 +47,13 @@ export const servicePillars = [
   {
     title: "Intelligent Systems",
     description:
-      "Build AI workspaces, dashboards, automations, and agents that help organizations work smarter.",
-    items: ["AI Agents", "Knowledge Systems", "Analytics & Reporting"],
+      "Build connected workspaces, dashboards, automations, and assistants that help organizations work smarter.",
+    items: ["Intelligent Assistants", "Knowledge Systems", "Analytics & Reporting"],
   },
 ];
 
 export const impactModules = [
-  { label: "AI Assistant", icon: Bot },
+  { label: "Intelligent Assistant", icon: Bot },
   { label: "Knowledge Hub", icon: Database },
   { label: "CRM", icon: Network },
   { label: "Automation", icon: Sprout },
@@ -90,7 +90,7 @@ export const industries = [
     name: "Universities",
     icon: GraduationCap,
     description:
-      "Research collaboration, AI knowledge hubs, student engagement, and project intelligence.",
+      "Research collaboration, knowledge hubs, student engagement, and project intelligence.",
   },
   {
     name: "Public Sector",
@@ -105,27 +105,27 @@ export const approach = ["Understand", "Design", "Build", "Integrate", "Measure"
 export const products = [
   {
     name: "UNIGO",
-    status: "Active concept",
+    status: "In development",
     description:
-      "An impact travel platform connecting travelers, communities, and responsible businesses.",
+      "An impact travel initiative being developed to connect travelers, communities, and responsible businesses.",
   },
   {
-    name: "Aviation Edition",
-    status: "Coming soon",
+    name: "Aviation Solutions",
+    status: "Exploration",
     description:
-      "AI workspaces for aviation operations, safety, training, sustainability, and knowledge management.",
+      "Future systems for aviation operations, safety, training, sustainability, and knowledge management.",
   },
   {
-    name: "Climate Edition",
-    status: "Coming soon",
+    name: "Climate & Ocean Solutions",
+    status: "Exploration",
     description:
-      "Systems for climate and ocean organizations to manage knowledge, MRV, partnerships, and reporting.",
+      "Future systems for climate and ocean organizations to manage knowledge, MRV, partnerships, and reporting.",
   },
 ];
 
 export const proofPoints = [
   "12+ years in aviation operations",
-  "AI, business administration, and data background",
+  "Business administration, data, and transformation expertise",
   "Experience across aviation, tourism, and sustainability",
   "Built around practical implementation, not presentation slides",
 ];
