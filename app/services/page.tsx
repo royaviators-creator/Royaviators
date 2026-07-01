@@ -9,9 +9,9 @@ import {
 import { servicePillarsDetailed } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Services | Royaviators",
+  title: "Services",
   description:
-    "Royaviators services are organized around strategy, transformation, and intelligent systems for measurable organizational impact.",
+    "Royaviators services connect strategy, operations, and intelligent systems for measurable impact.",
 };
 
 export default function ServicesPage() {
@@ -20,7 +20,7 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="Services"
         title="Consulting services organized around outcomes."
-        text="Royaviators helps organizations clarify strategy, transform how work happens, and build systems that support better decisions. The work starts with organizational reality, not with technology."
+        text="Royaviators helps organizations clarify strategy, improve work, and build systems that support better decisions."
         ctaLabel="Book a Strategy Session"
         ctaHref="/contact"
       />
@@ -30,7 +30,7 @@ export default function ServicesPage() {
           <SectionIntro
             eyebrow="Three pillars"
             title="From executive clarity to operating capability."
-            text="Each engagement is shaped around the outcomes leadership needs and the capacity teams need to sustain change."
+            text="Each engagement is shaped around leadership outcomes and team capacity."
           />
           <div className="pillar-stack">
             {servicePillarsDetailed.map((pillar) => (
@@ -55,11 +55,11 @@ export default function ServicesPage() {
           <SectionIntro
             eyebrow="How engagements work"
             title="Small enough to stay focused. Serious enough to change the system."
-            text="Royaviators typically begins with a strategic assessment, identifies the operating model that should exist, and then builds the systems, routines, and reporting structure needed to make progress visible."
+            text="Royaviators begins with the operating model, then builds the routines and reporting that make progress visible."
           />
           <div className="insight-panel">
             <p>
-              The result is not a stack of disconnected recommendations. It is a working transformation path that connects leadership priorities with day-to-day execution.
+              The result is a working path that connects leadership priorities with day-to-day execution.
             </p>
           </div>
         </div>
