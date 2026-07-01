@@ -1,16 +1,19 @@
 import {
   BarChart3,
   Bot,
-  Building2,
+  Compass,
   Database,
   FileText,
+  Gauge,
   GraduationCap,
+  Handshake,
   Landmark,
   Leaf,
   Network,
   Plane,
   Sprout,
   Waves,
+  Workflow,
 } from "lucide-react";
 
 export const navItems = [
@@ -123,16 +126,36 @@ export const products = [
   },
 ];
 
+export const trustCapabilities = [
+  {
+    title: "Operational understanding",
+    description:
+      "Transformation is designed around real workflows, operational pressure, safety, accountability, and the people doing the work.",
+    icon: Compass,
+  },
+  {
+    title: "Connected systems thinking",
+    description:
+      "We connect strategy, knowledge, data, processes, and technology so improvement is coordinated rather than fragmented.",
+    icon: Workflow,
+  },
+  {
+    title: "Measurable progress",
+    description:
+      "Every engagement is shaped around clear outcomes, practical indicators, and evidence that leadership can use.",
+    icon: Gauge,
+  },
+  {
+    title: "Long-term partnership",
+    description:
+      "We build with internal teams, transfer knowledge, and improve systems over time instead of leaving behind static recommendations.",
+    icon: Handshake,
+  },
+];
+
 export const proofPoints = [
   "12+ years in aviation operations",
   "Business administration, data, and transformation expertise",
   "Experience across aviation, tourism, and sustainability",
   "Built around practical implementation, not presentation slides",
-];
-
-export const comparison = [
-  ["Delivers advice", "Sells products", "Delivers transformation"],
-  ["Generic frameworks", "Generic software", "Tailored intelligent systems"],
-  ["Ends after project", "Ends after implementation", "Long-term partnership"],
-  ["Strategy-focused", "Product-focused", "Outcome-focused"],
 ];
