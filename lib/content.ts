@@ -15,12 +15,12 @@ import {
 } from "lucide-react";
 
 export const navItems = [
-  { label: "Solutions", href: "#solutions" },
-  { label: "ImpactOS", href: "#impactos" },
-  { label: "Services", href: "#services" },
-  { label: "Industries", href: "#industries" },
-  { label: "About", href: "#about" },
-  { label: "Initiatives", href: "#initiatives" },
+  { label: "ImpactOS", href: "/impactos" },
+  { label: "Services", href: "/services" },
+  { label: "Industries", href: "/industries" },
+  { label: "About", href: "/about" },
+  { label: "Insights", href: "/insights" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const challenges = [
