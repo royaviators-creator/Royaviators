@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ChevronRight, Database, ShieldCheck } from "lucide-react";
-import { getVisibleModules, roleLabels } from "@/lib/impactos/modules";
+import { roleLabels } from "@/lib/impactos/identity";
+import { getModuleById } from "@/lib/impactos/module-registry";
+import { resolveVisibleNavigation } from "@/lib/impactos/configuration";
 import { isSupabaseConfigured } from "@/lib/supabase/server";
 import type { ImpactModuleId, OrganizationRole, OrganizationWorkspace } from "@/lib/impactos/types";
 
@@ -10,9 +12,9 @@ type ImpactOSLayoutProps = {
   children: React.ReactNode;
 };
 
-export function ImpactOSLayout({ workspace, activeModuleId = "dashboard", children }: ImpactOSLayoutProps) {
-  const { organization, template } = workspace;
-  const visibleModules = getVisibleModules(organization.currentRole, template.enabledModules);
+export function ImpactOSLayout({ workspace, activeModuleId = "home", children }: ImpactOSLayoutProps) {
+  const { organization, edition, configuration } = workspace;
+  const visibleNavigation = resolveVisibleNavigation(configuration, organization.currentRole);
 
   return (
     <main className="os-shell">
@@ -23,27 +25,29 @@ export function ImpactOSLayout({ workspace, activeModuleId = "dashboard", childr
         </Link>
 
         <div className="os-tenant-card">
-          <span>{template.name}</span>
+          <span>{configuration.brand.productName}</span>
           <h1>{organization.name}</h1>
-          <p>{template.industry} operating-system demo.</p>
+          <p>{edition.category} {configuration.terminology.workspace}.</p>
         </div>
 
         <RoleSwitcher organizationSlug={organization.slug} currentRole={organization.currentRole} />
 
         <nav className="os-module-nav" aria-label="Workspace modules">
-          {visibleModules.map((module) => {
+          {visibleNavigation.map((item) => {
+            const module = getModuleById(item.moduleId);
+            if (!module) return null;
             const Icon = module.icon;
             const isActive = module.id === activeModuleId;
 
             return (
               <Link
                 className={isActive ? "active" : undefined}
-                href={module.id === "dashboard" ? `/os/${organization.slug}?role=${organization.currentRole}` : `/os/${organization.slug}/${module.id}?role=${organization.currentRole}`}
+                href={module.id === "home" ? `/os/${organization.slug}?role=${organization.currentRole}` : `/os/${organization.slug}/${module.id}?role=${organization.currentRole}`}
                 key={module.id}
                 aria-current={isActive ? "page" : undefined}
               >
                 <Icon size={18} aria-hidden="true" />
-                <span>{module.shortName}</span>
+                <span>{item.label}</span>
                 <em>{module.status}</em>
               </Link>
             );
@@ -60,10 +64,10 @@ export function ImpactOSLayout({ workspace, activeModuleId = "dashboard", childr
         <header className="os-topbar">
           <div>
             <p className="os-kicker">{organization.stage} workspace</p>
-            <h2>{template.description}</h2>
+            <h2>{edition.description}</h2>
           </div>
           <div className="os-topbar-actions" aria-label="Workspace status">
-            <span>{roleLabels[organization.currentRole]}</span>
+            <span>{configuration.terminology.roles[organization.currentRole] ?? roleLabels[organization.currentRole]}</span>
             <span>{organization.memberCount} demo members</span>
             <span className={isSupabaseConfigured() ? "online" : undefined}>
               <Database size={15} aria-hidden="true" />
@@ -85,7 +89,7 @@ function RoleSwitcher({
   organizationSlug: string;
   currentRole: OrganizationRole;
 }) {
-  const roles: OrganizationRole[] = ["executive", "operator", "admin", "partner"];
+  const roles: OrganizationRole[] = ["executive", "operator", "analyst", "admin", "partner"];
 
   return (
     <div className="os-role-switcher" aria-label="Demo role switcher">

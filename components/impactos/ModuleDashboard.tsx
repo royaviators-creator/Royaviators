@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { getModuleById } from "@/lib/impactos/modules";
+import { canAccessModule } from "@/lib/impactos/identity";
+import { getModuleById } from "@/lib/impactos/module-registry";
 import type { ModuleSnapshot, OrganizationWorkspace } from "@/lib/impactos/types";
 
 type ModuleDashboardProps = {
@@ -8,25 +9,26 @@ type ModuleDashboardProps = {
 };
 
 export function ModuleDashboard({ workspace }: ModuleDashboardProps) {
-  const { organization, template, moduleSnapshots } = workspace;
+  const { organization, edition, configuration, moduleSnapshots } = workspace;
+  const dashboardCardModules = new Set(configuration.dashboard.cards.map((card) => card.moduleId));
 
   return (
     <div className="os-content-stack">
       <section className="os-hero-panel">
         <div>
           <p className="os-kicker">Operating model</p>
-          <h2>{template.name} for {organization.name}</h2>
-          <p>{template.description}</p>
+          <h2>{configuration.brand.displayName} for {organization.name}</h2>
+          <p>{edition.description}</p>
         </div>
         <div className="os-outcome-list">
-          {template.outcomes.map((outcome) => (
+          {edition.outcomes.map((outcome) => (
             <span key={outcome}>{outcome}</span>
           ))}
         </div>
       </section>
 
       <section className="os-operating-grid" aria-label="Operating inputs">
-        {template.operatingInputs.map((input) => (
+        {edition.operatingInputs.map((input) => (
           <article key={input}>
             <span />
             <strong>{input}</strong>
@@ -37,20 +39,28 @@ export function ModuleDashboard({ workspace }: ModuleDashboardProps) {
       <section className="os-module-grid">
         {moduleSnapshots.map((snapshot) => {
           const module = getModuleById(snapshot.moduleId);
-          if (!module || !template.enabledModules.includes(module.id)) return null;
+          if (
+            !module ||
+            !configuration.enabledModules.includes(module.id) ||
+            !canAccessModule(organization.currentRole, module.id) ||
+            (configuration.dashboard.cards.length > 0 && !dashboardCardModules.has(module.id) && module.id !== "home")
+          ) {
+            return null;
+          }
           const Icon = module.icon;
+          const label = configuration.terminology.modules[module.id] ?? module.name;
 
           return (
             <Link
               className="os-module-card"
-              href={module.id === "dashboard" ? `/os/${organization.slug}?role=${organization.currentRole}` : `/os/${organization.slug}/${module.id}?role=${organization.currentRole}`}
+              href={module.id === "home" ? `/os/${organization.slug}?role=${organization.currentRole}` : `/os/${organization.slug}/${module.id}?role=${organization.currentRole}`}
               key={module.id}
             >
               <div>
                 <Icon size={22} aria-hidden="true" />
                 <span>{module.status}</span>
               </div>
-              <h3>{module.name}</h3>
+              <h3>{label}</h3>
               <p>{snapshot.summary}</p>
               <strong>
                 Open module

@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 import { ImpactOSLayout, OSBreadcrumb } from "@/components/impactos/ImpactOSLayout";
 import { ModuleDetail } from "@/components/impactos/ModuleDashboard";
 import { getDemoOrganization, getModuleSnapshot } from "@/lib/impactos/demo-data";
-import { canAccessModule, getModuleById } from "@/lib/impactos/modules";
+import { canAccessModule } from "@/lib/impactos/identity";
+import { getModuleById } from "@/lib/impactos/module-registry";
 import type { ImpactModuleId } from "@/lib/impactos/types";
 
 type ModulePageProps = {
@@ -28,7 +29,11 @@ export default async function ModulePage({ params, searchParams }: ModulePagePro
   const workspace = getDemoOrganization(organizationSlug, role);
   const module = getModuleById(moduleId);
 
-  if (!module || !canAccessModule(workspace.organization.currentRole, moduleId, workspace.template.enabledModules)) {
+  if (
+    !module ||
+    !workspace.configuration.enabledModules.includes(moduleId) ||
+    !canAccessModule(workspace.organization.currentRole, moduleId)
+  ) {
     notFound();
   }
 

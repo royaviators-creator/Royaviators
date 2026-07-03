@@ -10,9 +10,9 @@ type WorkspacePageProps = {
 };
 
 export const metadata: Metadata = {
-  title: "ImpactOS Core MVP",
+  title: "ImpactOS Core Foundation",
   description:
-    "A demo multi-tenant ImpactOS foundation with role-aware modules, OceanOS template, and Supabase-ready architecture.",
+    "A demo multi-tenant ImpactOS foundation with role-aware modules, Ocean Edition, and Supabase-ready architecture.",
 };
 
 export default async function WorkspacePage({ params, searchParams }: WorkspacePageProps) {
@@ -21,8 +21,8 @@ export default async function WorkspacePage({ params, searchParams }: WorkspaceP
   const workspace = getDemoOrganization(organizationSlug, role);
 
   return (
-    <ImpactOSLayout workspace={workspace} activeModuleId="dashboard">
-      <OSBreadcrumb organizationName={workspace.organization.name} moduleName="Dashboard" />
+    <ImpactOSLayout workspace={workspace} activeModuleId="home">
+      <OSBreadcrumb organizationName={workspace.organization.name} moduleName="Home" />
       <ModuleDashboard workspace={workspace} />
       <SupabaseReadiness />
     </ImpactOSLayout>

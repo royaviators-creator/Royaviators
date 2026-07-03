@@ -1,11 +1,13 @@
 import { notFound } from "next/navigation";
-import { getIndustryTemplate } from "@/lib/impactos/templates";
+import { resolveEffectiveWorkspaceConfiguration, validateConfiguration } from "@/lib/impactos/configuration";
+import { getEditionById } from "@/lib/impactos/edition-registry";
+import { normalizeRole } from "@/lib/impactos/identity";
 import type {
   ImpactModuleId,
   ModuleSnapshot,
   Organization,
-  OrganizationRole,
   OrganizationWorkspace,
+  Workspace,
 } from "@/lib/impactos/types";
 
 const organizations: Organization[] = [
@@ -13,16 +15,72 @@ const organizations: Organization[] = [
     id: "org_demo_deep_blue_drawdown",
     slug: "deep-blue-drawdown",
     name: "Deep Blue Drawdown",
-    templateId: "oceanos",
+    editionId: "ocean",
     industry: "Climate & Ocean",
     region: "Demo workspace",
     stage: "demo",
     memberCount: 18,
     currentRole: "executive",
+    configuration: {
+      brand: {
+        displayName: "Deep Blue Drawdown",
+        productName: "Ocean Edition",
+        reportBrand: "Deep Blue Drawdown ImpactOS",
+      },
+      terminology: {
+        workspace: "ocean workspace",
+        modules: {
+          projects: "Programs",
+          kpis: "Indicators",
+          maps: "Sites",
+        },
+        roles: {
+          executive: "Executive",
+          operator: "Operator",
+          admin: "Admin",
+          partner: "Partner",
+        },
+      },
+    },
+  },
+];
+
+const workspaces: Workspace[] = [
+  {
+    id: "ws_demo_deep_blue_executive",
+    slug: "executive",
+    organizationId: "org_demo_deep_blue_drawdown",
+    name: "Executive Workspace",
+    type: "executive",
+    configuration: {
+      dashboard: {
+        landingModuleId: "home",
+        cards: [
+          { id: "active-programs", title: "Active programs", moduleId: "projects", metric: "active_programs" },
+          { id: "reporting-readiness", title: "Reporting readiness", moduleId: "reports", metric: "reporting_readiness" },
+          { id: "evidence-quality", title: "Evidence quality", moduleId: "knowledge", metric: "evidence_quality" },
+          { id: "open-decisions", title: "Open decisions", moduleId: "dashboard", metric: "open_decisions" },
+        ],
+      },
+    },
   },
 ];
 
 const oceanSnapshots: ModuleSnapshot[] = [
+  {
+    moduleId: "home",
+    summary: "Configured workspace home for priorities, recent movement, reporting readiness, and leadership focus.",
+    metrics: [
+      { label: "Configuration", value: "v1.0", detail: "Effective workspace config" },
+      { label: "Edition", value: "Ocean", detail: "Versioned defaults" },
+      { label: "Workspace", value: "1", detail: "Demo executive workspace" },
+    ],
+    records: [
+      { title: "Configuration engine", meta: "Core platform", status: "Active" },
+      { title: "Module registry", meta: "Core platform", status: "Active" },
+      { title: "Edition registry", meta: "Ocean Edition", status: "Active" },
+    ],
+  },
   {
     moduleId: "dashboard",
     summary: "Executive view of restoration work, partner activity, reporting readiness, and open decisions.",
@@ -94,8 +152,8 @@ const oceanSnapshots: ModuleSnapshot[] = [
     ],
   },
   {
-    moduleId: "analytics",
-    summary: "Operating signals for restoration activity, evidence quality, partner cadence, and reporting risk.",
+    moduleId: "kpis",
+    summary: "Impact indicators for restoration activity, evidence quality, partner cadence, and reporting risk.",
     metrics: [
       { label: "Evidence quality", value: "B+", detail: "Demo score" },
       { label: "Partner cadence", value: "88%", detail: "Expected updates" },
@@ -125,11 +183,9 @@ const oceanSnapshots: ModuleSnapshot[] = [
 
 const placeholderModuleIds: ImpactModuleId[] = [
   "assistant",
-  "automation",
-  "notifications",
+  "workflows",
   "integrations",
   "admin",
-  "settings",
 ];
 
 const placeholderSnapshots: ModuleSnapshot[] = placeholderModuleIds.map((moduleId) => ({
@@ -153,27 +209,33 @@ export function getDemoOrganization(slug: string, role?: string): OrganizationWo
   const organization = organizations.find((item) => item.slug === slug);
   if (!organization) notFound();
 
-  const template = getIndustryTemplate(organization.templateId);
-  if (!template) notFound();
+  const workspace = workspaces.find((item) => item.organizationId === organization.id);
+  if (!workspace) notFound();
+
+  const edition = getEditionById(organization.editionId);
+  if (!edition) notFound();
+
+  const resolvedOrganization = {
+    ...organization,
+    currentRole: normalizeRole(role) ?? organization.currentRole,
+  };
+  const configuration = resolveEffectiveWorkspaceConfiguration({
+    edition,
+    organization: resolvedOrganization,
+    workspace,
+  });
+  const validation = validateConfiguration(configuration);
+  if (!validation.valid) notFound();
 
   return {
-    organization: {
-      ...organization,
-      currentRole: normalizeRole(role) ?? organization.currentRole,
-    },
-    template,
+    organization: resolvedOrganization,
+    workspace,
+    edition,
+    configuration,
     moduleSnapshots,
   };
 }
 
 export function getModuleSnapshot(moduleId: ImpactModuleId) {
   return moduleSnapshots.find((snapshot) => snapshot.moduleId === moduleId);
-}
-
-export function normalizeRole(role?: string): OrganizationRole | null {
-  if (!role) return null;
-  if (["owner", "admin", "executive", "operator", "partner"].includes(role)) {
-    return role as OrganizationRole;
-  }
-  return null;
 }
