@@ -1,5 +1,6 @@
-import { canAccessModule } from "@/lib/impactos/identity";
 import { getModuleById, listModules } from "@/lib/impactos/module-registry";
+import { evaluatePermission } from "@/lib/impactos/permission-engine";
+import { validateEffectiveConfiguration } from "@/lib/impactos/validation";
 import type {
   EffectiveWorkspaceConfiguration,
   FeatureFlagConfig,
@@ -126,30 +127,24 @@ export function resolveNavigation(navigation: NavigationItemConfig[], enabledMod
 }
 
 export function resolveVisibleNavigation(configuration: EffectiveWorkspaceConfiguration, role: OrganizationRole) {
-  return configuration.navigation.filter((item) => canAccessModule(role, item.moduleId));
+  return configuration.navigation.filter((item) =>
+    evaluatePermission({
+      role,
+      permission: `${item.moduleId}:view`,
+      context: {
+        organizationId: configuration.organizationId,
+        workspaceId: configuration.workspaceId,
+        moduleId: item.moduleId,
+      },
+    }).allowed,
+  );
 }
 
 export function validateConfiguration(configuration: EffectiveWorkspaceConfiguration) {
-  const errors: string[] = [];
-
-  for (const moduleId of configuration.enabledModules) {
-    if (!getModuleById(moduleId)) errors.push(`Unknown module: ${moduleId}`);
-  }
-
-  for (const item of configuration.navigation) {
-    if (!configuration.enabledModules.includes(item.moduleId)) {
-      errors.push(`Navigation references disabled module: ${item.moduleId}`);
-    }
-  }
-
-  for (const card of configuration.dashboard.cards) {
-    if (!configuration.enabledModules.includes(card.moduleId)) {
-      errors.push(`Dashboard card references disabled module: ${card.moduleId}`);
-    }
-  }
+  const validation = validateEffectiveConfiguration(configuration);
 
   return {
-    valid: errors.length === 0,
-    errors,
+    valid: validation.valid,
+    errors: validation.issues.filter((issue) => issue.severity === "error").map((issue) => issue.message),
   };
 }

@@ -24,6 +24,21 @@ test("permission engine honors explicit deny before role grants", () => {
   assert.equal(evaluation.reason, "explicit-deny");
 });
 
+test("permission engine preserves role inheritance grants", () => {
+  const evaluation = evaluatePermission({
+    role: "admin",
+    permission: "projects:edit",
+    context: {
+      organizationId: "org_test",
+      workspaceId: "ws_test",
+      moduleId: "projects",
+    },
+  });
+
+  assert.equal(evaluation.allowed, true);
+  assert.equal(evaluation.reason, "role-grant");
+});
+
 test("permission engine supports conditional ABAC-ready allow rules", () => {
   const evaluation = evaluatePermission({
     role: "viewer",

@@ -35,6 +35,17 @@ function mergeFeatureFlags(...flagSets: FeatureFlagConfig[][]) {
 }
 
 export function loadEffectiveConfiguration(input: ConfigurationLoadInput): EffectiveWorkspaceConfiguration {
+  const edition: EditionManifest = {
+    ...input.edition,
+    defaultOrganizationConfig: {
+      ...input.edition.defaultOrganizationConfig,
+      featureFlags: mergeFeatureFlags(
+        input.core?.featureFlags ?? [],
+        input.edition.defaultOrganizationConfig.featureFlags,
+      ),
+    },
+  };
+
   const organization: Organization = {
     ...input.organization,
     configuration: {
@@ -55,7 +66,6 @@ export function loadEffectiveConfiguration(input: ConfigurationLoadInput): Effec
         },
       },
       featureFlags: mergeFeatureFlags(
-        input.core?.featureFlags ?? [],
         input.organization.configuration?.featureFlags ?? [],
         input.organizationOverride?.featureFlags ?? [],
       ),
@@ -79,7 +89,7 @@ export function loadEffectiveConfiguration(input: ConfigurationLoadInput): Effec
   };
 
   const resolved = resolveEffectiveWorkspaceConfiguration({
-    edition: input.edition,
+    edition,
     organization,
     workspace,
   });

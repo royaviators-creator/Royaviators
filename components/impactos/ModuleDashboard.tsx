@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { canAccessModule } from "@/lib/impactos/identity";
 import { getModuleById } from "@/lib/impactos/module-registry";
+import { evaluatePermission } from "@/lib/impactos/permission-engine";
 import type { ModuleSnapshot, OrganizationWorkspace } from "@/lib/impactos/types";
 
 type ModuleDashboardProps = {
@@ -42,7 +42,15 @@ export function ModuleDashboard({ workspace }: ModuleDashboardProps) {
           if (
             !module ||
             !configuration.enabledModules.includes(module.id) ||
-            !canAccessModule(organization.currentRole, module.id) ||
+            !evaluatePermission({
+              role: organization.currentRole,
+              permission: `${module.id}:view`,
+              context: {
+                organizationId: configuration.organizationId,
+                workspaceId: configuration.workspaceId,
+                moduleId: module.id,
+              },
+            }).allowed ||
             (configuration.dashboard.cards.length > 0 && !dashboardCardModules.has(module.id) && module.id !== "home")
           ) {
             return null;

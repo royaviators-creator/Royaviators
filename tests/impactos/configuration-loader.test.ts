@@ -59,3 +59,46 @@ test("configuration loader applies core, edition, organization, workspace, and u
   assert.equal(configuration.dashboard.landingModuleId, "reports");
   assert.equal(configuration.theme.density, "compact");
 });
+
+test("configuration loader gives core defaults the lowest precedence", () => {
+  const configuration = loadEffectiveConfiguration({
+    core: {
+      featureFlags: [
+        {
+          key: "assistant.governed-beta",
+          enabled: false,
+          description: "Core default is overridden by edition defaults.",
+          scope: "core",
+        },
+      ],
+    },
+    edition,
+    organization,
+    workspace,
+  });
+
+  assert.equal(configuration.featureFlags.find((flag) => flag.key === "assistant.governed-beta")?.enabled, true);
+  assert.equal(configuration.enabledModules.includes("assistant"), true);
+});
+
+test("configuration loader applies organization above edition and workspace above organization", () => {
+  const configuration = loadEffectiveConfiguration({
+    edition,
+    organization,
+    organizationOverride: {
+      enabledModules: ["home", "dashboard", "projects", "reports", "admin"],
+      brand: { displayName: "Organization Layer" },
+    },
+    workspace,
+    workspaceOverride: {
+      enabledModules: ["home", "reports"],
+    },
+    userPreferences: {
+      preferredLandingModuleId: "reports",
+    },
+  });
+
+  assert.equal(configuration.brand.displayName, "Organization Layer");
+  assert.deepEqual(configuration.enabledModules, ["home", "reports"]);
+  assert.equal(configuration.dashboard.landingModuleId, "reports");
+});

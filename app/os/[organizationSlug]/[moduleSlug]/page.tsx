@@ -3,8 +3,8 @@ import { notFound } from "next/navigation";
 import { ImpactOSLayout, OSBreadcrumb } from "@/components/impactos/ImpactOSLayout";
 import { ModuleDetail } from "@/components/impactos/ModuleDashboard";
 import { getDemoOrganization, getModuleSnapshot } from "@/lib/impactos/demo-data";
-import { canAccessModule } from "@/lib/impactos/identity";
 import { getModuleById } from "@/lib/impactos/module-registry";
+import { evaluatePermission } from "@/lib/impactos/permission-engine";
 import type { ImpactModuleId } from "@/lib/impactos/types";
 
 type ModulePageProps = {
@@ -32,7 +32,15 @@ export default async function ModulePage({ params, searchParams }: ModulePagePro
   if (
     !module ||
     !workspace.configuration.enabledModules.includes(moduleId) ||
-    !canAccessModule(workspace.organization.currentRole, moduleId)
+    !evaluatePermission({
+      role: workspace.organization.currentRole,
+      permission: `${moduleId}:view`,
+      context: {
+        organizationId: workspace.configuration.organizationId,
+        workspaceId: workspace.configuration.workspaceId,
+        moduleId,
+      },
+    }).allowed
   ) {
     notFound();
   }

@@ -1,8 +1,9 @@
 import { ImpactOSRegistryError } from "@/lib/impactos/errors";
-import type { InMemoryEventBus } from "@/lib/impactos/event-bus";
+import type { ImpactEventPublisher, ImpactEventSubscriber } from "@/lib/impactos/event-bus";
 
 export type ImpactOSServiceMap = {
-  eventBus: InMemoryEventBus;
+  eventPublisher: ImpactEventPublisher;
+  eventSubscriber: ImpactEventSubscriber;
 };
 
 export type ImpactOSServiceKey = keyof ImpactOSServiceMap;
