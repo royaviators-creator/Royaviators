@@ -28,14 +28,20 @@ export type ImpactModuleId =
   | "admin";
 
 export type PlatformCapabilityId =
+  | "ai-assistant"
   | "identity"
   | "permissions"
   | "configuration"
   | "module-registry"
   | "edition-registry"
   | "navigation"
+  | "projects"
   | "knowledge"
+  | "documents"
+  | "reporting"
+  | "maps"
   | "ai-orchestration"
+  | "automation"
   | "workflow-runtime"
   | "audit"
   | "notifications"
@@ -159,6 +165,12 @@ export type WorkspaceConfigurationOverride = {
   dashboard?: Partial<DashboardConfig>;
 };
 
+export type UserPreferenceConfiguration = {
+  navigationCollapsed?: boolean;
+  preferredLandingModuleId?: ImpactModuleId;
+  density?: ThemeConfig["density"];
+};
+
 export type OrganizationConfiguration = {
   brand: BrandConfig;
   theme: ThemeConfig;
@@ -185,6 +197,7 @@ export type EffectiveWorkspaceConfiguration = OrganizationConfiguration &
     editionVersion: string;
     organizationId: string;
     workspaceId: string;
+    userPreferences?: UserPreferenceConfiguration;
   };
 
 export type EditionManifest = {
@@ -229,7 +242,18 @@ export type OrganizationWorkspace = {
   moduleSnapshots: ModuleSnapshot[];
 };
 
-export type IntegrationPort = "data" | "file" | "model" | "embeddings" | "search" | "maps" | "workflow";
+export type IntegrationPort =
+  | "data"
+  | "file"
+  | "model"
+  | "embeddings"
+  | "search"
+  | "maps"
+  | "workflow"
+  | "email"
+  | "calendar"
+  | "crm"
+  | "analytics";
 
 export type IntegrationAdapterManifest = {
   id: string;
@@ -239,4 +263,102 @@ export type IntegrationAdapterManifest = {
   version: string;
   capabilities: string[];
   credentialMode: "none" | "server-only";
+};
+
+export type PlatformCapabilityStatus = "planned" | "internal-preview" | "beta" | "stable";
+
+export type PlatformCapabilityDefinition = {
+  id: PlatformCapabilityId;
+  name: string;
+  description: string;
+  status: PlatformCapabilityStatus;
+  version: string;
+  owner: "core" | "data" | "intelligence" | "operations" | "governance" | "integration";
+  requiredFor?: ImpactModuleId[];
+  dependsOn?: PlatformCapabilityId[];
+};
+
+export type ProviderId = "mock" | "supabase" | "openai" | "mapbox" | "n8n";
+
+export type ProviderDefinition = {
+  id: ProviderId;
+  name: string;
+  description: string;
+  version: string;
+  ports: IntegrationPort[];
+  capabilityIds: PlatformCapabilityId[];
+  credentialMode: "none" | "server-only";
+  replaceableBy: ProviderId[];
+};
+
+export type ImpactEventName =
+  | "document.created"
+  | "project.updated"
+  | "knowledge.indexed"
+  | "assistant.completed"
+  | "report.generated";
+
+export type ImpactEventPayloads = {
+  "document.created": { documentId: string; workspaceId: string };
+  "project.updated": { projectId: string; workspaceId: string; changedFields: string[] };
+  "knowledge.indexed": { collectionId: string; workspaceId: string; sourceCount: number };
+  "assistant.completed": { assistantRunId: string; workspaceId: string; status: "completed" | "failed" };
+  "report.generated": { reportId: string; workspaceId: string; format: "pdf" | "docx" | "html" };
+};
+
+export type ImpactEvent<TName extends ImpactEventName = ImpactEventName> = {
+  id: string;
+  name: TName;
+  organizationId: string;
+  workspaceId?: string;
+  moduleId?: ImpactModuleId;
+  occurredAt: string;
+  payload: ImpactEventPayloads[TName];
+  metadata?: Record<string, string>;
+};
+
+export type PermissionEffect = "allow" | "deny";
+
+export type PermissionCondition = {
+  attribute: "organizationId" | "workspaceId" | "moduleId" | "classification" | "ownerId" | "region";
+  operator: "equals" | "in";
+  value: string | string[];
+};
+
+export type PermissionRule = {
+  id: string;
+  effect: PermissionEffect;
+  permission: PermissionKey;
+  description: string;
+  conditions?: PermissionCondition[];
+};
+
+export type PermissionEvaluationContext = {
+  organizationId: string;
+  workspaceId?: string;
+  moduleId?: ImpactModuleId;
+  userId?: string;
+  attributes?: Record<string, string | string[] | undefined>;
+  overrides?: PermissionRule[];
+};
+
+export type PermissionEvaluation = {
+  allowed: boolean;
+  permission: PermissionKey;
+  reason: "explicit-deny" | "explicit-allow" | "role-grant" | "not-granted";
+  matchedRuleIds: string[];
+};
+
+export type ValidationSeverity = "error" | "warning";
+
+export type ValidationIssue = {
+  code: string;
+  message: string;
+  severity: ValidationSeverity;
+  path?: string;
+};
+
+export type ValidationResult = {
+  valid: boolean;
+  issues: ValidationIssue[];
 };

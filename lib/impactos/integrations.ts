@@ -1,4 +1,4 @@
-import type { IntegrationAdapterManifest, IntegrationPort } from "@/lib/impactos/types";
+import type { IntegrationAdapterManifest, IntegrationPort, ProviderId } from "@/lib/impactos/types";
 
 export type IntegrationHealth = {
   status: "available" | "configured" | "missing-credentials" | "degraded";
@@ -14,7 +14,7 @@ function hasEnv(...keys: string[]) {
   return keys.every((key) => Boolean(process.env[key]));
 }
 
-function createAdapter(manifest: IntegrationAdapterManifest, requiredEnv: string[] = []): IntegrationAdapter {
+export function createAdapter(manifest: IntegrationAdapterManifest, requiredEnv: string[] = []): IntegrationAdapter {
   return {
     manifest,
     health() {
@@ -100,4 +100,8 @@ export function listIntegrationAdapters(port?: IntegrationPort) {
 
 export function getIntegrationAdapter(adapterId: string) {
   return integrationAdapters.find((adapter) => adapter.manifest.id === adapterId);
+}
+
+export function listIntegrationAdaptersByProvider(provider: ProviderId) {
+  return integrationAdapters.filter((adapter) => adapter.manifest.provider === provider);
 }
