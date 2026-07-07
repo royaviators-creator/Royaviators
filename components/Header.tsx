@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/LOGO.jpeg";
@@ -9,13 +9,38 @@ import { siteConfig, strategySessionHref } from "@/lib/site";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
 
   function closeMenu() {
     setIsMenuOpen(false);
   }
 
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    }
+
+    function handlePointerDown(event: PointerEvent) {
+      if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
+        closeMenu();
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("pointerdown", handlePointerDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("pointerdown", handlePointerDown);
+    };
+  }, [isMenuOpen]);
+
   return (
-    <header className="site-header">
+    <header className="site-header" ref={headerRef}>
       <div className="container header-inner">
         <Link href="/" className="brand" aria-label={`${siteConfig.name} home`} onClick={closeMenu}>
           <Image
