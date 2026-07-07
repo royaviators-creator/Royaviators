@@ -1,19 +1,21 @@
+import { siteConfig, strategySessionHref } from "@/lib/site";
+
 export function Hero() {
   return (
     <section className="hero">
       <div className="container hero-grid">
         <div className="hero-copy">
-          <p className="eyebrow">Impact Systems Consultancy</p>
+          <p className="eyebrow">{siteConfig.tagline}</p>
           <h1>Turn complexity into measurable impact.</h1>
           <p className="hero-subtitle">
             Royaviators helps aviation, tourism, climate, ocean, public sector, and mission-driven organizations improve operations, knowledge, and decision-making through connected systems built for lasting impact.
           </p>
           <div className="hero-actions">
-            <a className="btn btn-primary" href="#contact">
-              Book a Strategy Session
+            <a className="btn btn-primary" href={strategySessionHref}>
+              {siteConfig.cta.strategySession.label}
             </a>
             <a className="btn btn-secondary" href="#impactos">
-              Explore ImpactOS
+              {siteConfig.cta.impactOS.label}
             </a>
           </div>
         </div>

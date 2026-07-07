@@ -19,7 +19,7 @@ export const navItems = [
   { label: "Services", href: "#services" },
   { label: "Industries", href: "#industries" },
   { label: "About", href: "#about" },
-  { label: "Initiatives", href: "#initiatives" },
+  { label: "Editions", href: "#editions" },
 ];
 
 export const challenges = [
@@ -102,24 +102,24 @@ export const industries = [
 
 export const approach = ["Understand", "Design", "Build", "Integrate", "Measure", "Improve"];
 
-export const products = [
+export const platformEditions = [
   {
-    name: "UNIGO",
-    status: "In development",
+    name: "Industry Editions",
+    status: "Configurable",
     description:
-      "An impact travel initiative being developed to connect travelers, communities, and responsible businesses.",
+      "ImpactOS can adapt terminology, workflows, dashboards, knowledge, reports, and KPIs to each sector.",
   },
   {
-    name: "Aviation Solutions",
-    status: "Exploration",
+    name: "Workspace Modules",
+    status: "Composable",
     description:
-      "Future systems for aviation operations, safety, training, sustainability, and knowledge management.",
+      "Organizations can combine knowledge, documents, projects, analytics, automation, and assistant capabilities around their operating model.",
   },
   {
-    name: "Climate & Ocean Solutions",
-    status: "Exploration",
+    name: "Implementation Blueprints",
+    status: "Tailored",
     description:
-      "Future systems for climate and ocean organizations to manage knowledge, MRV, partnerships, and reporting.",
+      "Each implementation starts from a stable platform foundation and is configured for the client context.",
   },
 ];
 
@@ -131,7 +131,7 @@ export const proofPoints = [
 ];
 
 export const comparison = [
-  ["Delivers advice", "Sells products", "Delivers transformation"],
+  ["Delivers advice", "Sells software", "Delivers transformation"],
   ["Generic frameworks", "Generic software", "Tailored intelligent systems"],
   ["Ends after project", "Ends after implementation", "Long-term partnership"],
   ["Strategy-focused", "Product-focused", "Outcome-focused"],

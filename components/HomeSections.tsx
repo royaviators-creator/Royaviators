@@ -1,4 +1,5 @@
-import { challenges, servicePillars, impactModules, industries, approach, products, proofPoints, comparison } from "@/lib/content";
+import { challenges, servicePillars, impactModules, industries, approach, platformEditions, proofPoints, comparison } from "@/lib/content";
+import { siteConfig, strategySessionHref } from "@/lib/site";
 
 function Intro({ kicker, title, text }: { kicker: string; title: string; text?: string }) {
   return (
@@ -70,7 +71,7 @@ export function ImpactOS() {
           <p>
             ImpactOS is the reusable workspace behind Royaviators transformation projects. It connects knowledge, relationships, documents, dashboards, automation, analytics, reporting, collaboration, and selected AI capabilities in one tailored operating system.
           </p>
-          <a className="btn btn-secondary" href="#contact">Explore an implementation</a>
+          <a className="btn btn-secondary" href="#contact">{siteConfig.cta.implementation.label}</a>
         </div>
         <div className="module-grid">
           {impactModules.map((module) => {
@@ -149,17 +150,17 @@ export function WhyRoyaviators() {
   );
 }
 
-export function Products() {
+export function PlatformEditions() {
   return (
-    <section id="initiatives" className="section surface-section">
+    <section id="editions" className="section surface-section">
       <div className="container">
-        <Intro kicker="Selected initiatives" title="Ideas being developed on the same systems foundation." text="These initiatives show the direction of our work. They are presented transparently according to their current stage." />
+        <Intro kicker="Platform editions" title="ImpactOS is one foundation configured for different operating contexts." text="Rather than presenting separate public offerings, Royaviators configures the platform around each organization’s terminology, workflows, decisions, and reporting needs." />
         <div className="grid-3">
-          {products.map((product) => (
-            <article className="product-card card" key={product.name}>
-              <span>{product.status}</span>
-              <h3>{product.name}</h3>
-              <p>{product.description}</p>
+          {platformEditions.map((edition) => (
+            <article className="product-card card" key={edition.name}>
+              <span>{edition.status}</span>
+              <h3>{edition.name}</h3>
+              <p>{edition.description}</p>
             </article>
           ))}
         </div>
@@ -175,7 +176,7 @@ export function ContactCTA() {
         <p className="eyebrow">Start the conversation</p>
         <h2>The organizations creating the greatest impact will redesign how they work.</h2>
         <p>Let’s explore how strategy, connected knowledge, automation, data, and carefully selected intelligent technologies can create measurable value for your organization.</p>
-        <a className="btn btn-primary" href="mailto:hello@royaviators.com">Book a Strategy Session</a>
+        <a className="btn btn-primary" href={strategySessionHref}>{siteConfig.cta.strategySession.label}</a>
       </div>
     </section>
   );
