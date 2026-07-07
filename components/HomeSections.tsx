@@ -1,4 +1,4 @@
-import { challenges, servicePillars, impactModules, industries, approach, products, proofPoints, comparison } from "@/lib/content";
+import { challenges, servicePillars, impactModules, industries, approach, platformEditions, proofPoints, comparison } from "@/lib/content";
 import { siteConfig, strategySessionHref } from "@/lib/site";
 
 function Intro({ kicker, title, text }: { kicker: string; title: string; text?: string }) {
@@ -150,17 +150,17 @@ export function WhyRoyaviators() {
   );
 }
 
-export function Products() {
+export function PlatformEditions() {
   return (
-    <section id="initiatives" className="section surface-section">
+    <section id="editions" className="section surface-section">
       <div className="container">
-        <Intro kicker="Selected initiatives" title="Ideas being developed on the same systems foundation." text="These initiatives show the direction of our work. They are presented transparently according to their current stage." />
+        <Intro kicker="Platform editions" title="ImpactOS is one foundation configured for different operating contexts." text="Rather than presenting separate public offerings, Royaviators configures the platform around each organization’s terminology, workflows, decisions, and reporting needs." />
         <div className="grid-3">
-          {products.map((product) => (
-            <article className="product-card card" key={product.name}>
-              <span>{product.status}</span>
-              <h3>{product.name}</h3>
-              <p>{product.description}</p>
+          {platformEditions.map((edition) => (
+            <article className="product-card card" key={edition.name}>
+              <span>{edition.status}</span>
+              <h3>{edition.name}</h3>
+              <p>{edition.description}</p>
             </article>
           ))}
         </div>
