@@ -1,5 +1,5 @@
 import { challenges, servicePillars, impactModules, industries, approach, products, proofPoints, comparison } from "@/lib/content";
-import { strategySessionHref } from "@/lib/site";
+import { siteConfig, strategySessionHref } from "@/lib/site";
 
 function Intro({ kicker, title, text }: { kicker: string; title: string; text?: string }) {
   return (
@@ -71,7 +71,7 @@ export function ImpactOS() {
           <p>
             ImpactOS is the reusable workspace behind Royaviators transformation projects. It connects knowledge, relationships, documents, dashboards, automation, analytics, reporting, collaboration, and selected AI capabilities in one tailored operating system.
           </p>
-          <a className="btn btn-secondary" href="#contact">Explore an implementation</a>
+          <a className="btn btn-secondary" href="#contact">{siteConfig.cta.implementation.label}</a>
         </div>
         <div className="module-grid">
           {impactModules.map((module) => {
@@ -176,7 +176,7 @@ export function ContactCTA() {
         <p className="eyebrow">Start the conversation</p>
         <h2>The organizations creating the greatest impact will redesign how they work.</h2>
         <p>Let’s explore how strategy, connected knowledge, automation, data, and carefully selected intelligent technologies can create measurable value for your organization.</p>
-        <a className="btn btn-primary" href={strategySessionHref}>Book a Strategy Session</a>
+        <a className="btn btn-primary" href={strategySessionHref}>{siteConfig.cta.strategySession.label}</a>
       </div>
     </section>
   );

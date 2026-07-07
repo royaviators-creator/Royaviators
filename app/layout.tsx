@@ -1,24 +1,24 @@
 import type { Metadata, Viewport } from "next";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
-import { contactEmail, siteDescription, siteName, siteUrl } from "@/lib/site";
+import { siteConfig } from "@/lib/site";
 import "./globals.css";
 import "./enhancements.css";
 
 export const metadata: Metadata = {
   title: {
-    default: `${siteName} | Impact Systems Consultancy`,
-    template: `%s | ${siteName}`,
+    default: `${siteConfig.name} | ${siteConfig.tagline}`,
+    template: `%s | ${siteConfig.name}`,
   },
-  description: siteDescription,
-  metadataBase: new URL(siteUrl),
+  description: siteConfig.description,
+  metadataBase: new URL(siteConfig.url),
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: `${siteName} | Impact Systems Consultancy`,
-    description: siteDescription,
+    title: `${siteConfig.name} | ${siteConfig.tagline}`,
+    description: siteConfig.description,
     url: "/",
-    siteName,
+    siteName: siteConfig.name,
     type: "website",
     locale: "en_US",
     images: [
@@ -26,14 +26,14 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: `${siteName} impact systems consultancy`,
+        alt: siteConfig.openGraphAlt,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteName} | Impact Systems Consultancy`,
-    description: siteDescription,
+    title: `${siteConfig.name} | ${siteConfig.tagline}`,
+    description: siteConfig.description,
     images: ["/opengraph-image"],
   },
   robots: {
@@ -53,24 +53,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "@graph": [
       {
         "@type": "Organization",
-        "@id": `${siteUrl}/#organization`,
-        name: siteName,
-        url: siteUrl,
-        description: siteDescription,
+        "@id": `${siteConfig.url}/#organization`,
+        name: siteConfig.name,
+        url: siteConfig.url,
+        description: siteConfig.description,
         areaServed: "International",
         contactPoint: {
           "@type": "ContactPoint",
-          contactType: "Consulting inquiries",
-          email: contactEmail,
+          contactType: siteConfig.contact.type,
+          email: siteConfig.contact.email,
         },
       },
       {
         "@type": "WebSite",
-        "@id": `${siteUrl}/#website`,
-        name: siteName,
-        url: siteUrl,
+        "@id": `${siteConfig.url}/#website`,
+        name: siteConfig.name,
+        url: siteConfig.url,
         publisher: {
-          "@id": `${siteUrl}/#organization`,
+          "@id": `${siteConfig.url}/#organization`,
         },
       },
     ],
