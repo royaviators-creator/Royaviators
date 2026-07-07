@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "@/LOGO.jpeg";
 import { navItems } from "@/lib/content";
+import { strategySessionHref } from "@/lib/site";
 
 export function Header() {
   return (
@@ -27,7 +28,7 @@ export function Header() {
           ))}
         </nav>
 
-        <a className="btn btn-primary header-cta" href="#contact">
+        <a className="btn btn-primary header-cta" href={strategySessionHref}>
           Book a Strategy Session
         </a>
       </div>

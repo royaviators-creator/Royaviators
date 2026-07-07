@@ -1,4 +1,5 @@
 import { challenges, servicePillars, impactModules, industries, approach, products, proofPoints, comparison } from "@/lib/content";
+import { strategySessionHref } from "@/lib/site";
 
 function Intro({ kicker, title, text }: { kicker: string; title: string; text?: string }) {
   return (
@@ -175,7 +176,7 @@ export function ContactCTA() {
         <p className="eyebrow">Start the conversation</p>
         <h2>The organizations creating the greatest impact will redesign how they work.</h2>
         <p>Let’s explore how strategy, connected knowledge, automation, data, and carefully selected intelligent technologies can create measurable value for your organization.</p>
-        <a className="btn btn-primary" href="mailto:hello@royaviators.com">Book a Strategy Session</a>
+        <a className="btn btn-primary" href={strategySessionHref}>Book a Strategy Session</a>
       </div>
     </section>
   );

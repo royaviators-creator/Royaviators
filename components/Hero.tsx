@@ -1,3 +1,5 @@
+import { strategySessionHref } from "@/lib/site";
+
 export function Hero() {
   return (
     <section className="hero">
@@ -9,7 +11,7 @@ export function Hero() {
             Royaviators helps aviation, tourism, climate, ocean, public sector, and mission-driven organizations improve operations, knowledge, and decision-making through connected systems built for lasting impact.
           </p>
           <div className="hero-actions">
-            <a className="btn btn-primary" href="#contact">
+            <a className="btn btn-primary" href={strategySessionHref}>
               Book a Strategy Session
             </a>
             <a className="btn btn-secondary" href="#impactos">

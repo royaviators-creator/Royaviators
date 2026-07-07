@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 type GtagCommand =
   | ["event", string, Record<string, unknown>]
@@ -23,19 +23,13 @@ export function GoogleAnalyticsPageView({
   measurementId,
 }: GoogleAnalyticsPageViewProps) {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
-
-  const pagePath = useMemo(() => {
-    const queryString = searchParams.toString();
-
-    return queryString ? `${pathname}?${queryString}` : pathname;
-  }, [pathname, searchParams]);
 
   useEffect(() => {
     if (process.env.NODE_ENV !== "production") {
       return;
     }
 
+    const pagePath = `${pathname}${window.location.search}`;
     const pageView: GtagCommand = [
       "event",
       "page_view",
@@ -54,7 +48,7 @@ export function GoogleAnalyticsPageView({
 
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(pageView);
-  }, [measurementId, pagePath]);
+  }, [measurementId, pathname]);
 
   return null;
 }

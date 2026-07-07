@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
+import { Footer } from "@/components/Footer";
 import {
   Approach,
   Challenges,
@@ -14,7 +15,7 @@ import {
 
 export default function Home() {
   return (
-    <main>
+    <main id="main-content">
       <Header />
       <Hero />
       <TrustedPartner />
@@ -26,6 +27,7 @@ export default function Home() {
       <WhyRoyaviators />
       <Products />
       <ContactCTA />
+      <Footer />
     </main>
   );
 }
