@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { siteDescription, siteName } from "@/lib/site";
+import { siteConfig } from "@/lib/site";
 
 export const size = {
   width: 1200,
@@ -24,13 +24,13 @@ export default function OpenGraphImage() {
         }}
       >
         <div style={{ color: "#2563eb", fontSize: 28, fontWeight: 800, letterSpacing: 3 }}>
-          IMPACT SYSTEMS CONSULTANCY
+          {siteConfig.tagline.toUpperCase()}
         </div>
         <div style={{ fontSize: 92, fontWeight: 800, letterSpacing: 0, marginTop: 28 }}>
-          {siteName}
+          {siteConfig.name}
         </div>
         <div style={{ color: "#334155", fontSize: 36, lineHeight: 1.35, marginTop: 24, maxWidth: 920 }}>
-          {siteDescription}
+          {siteConfig.description}
         </div>
       </div>
     ),
