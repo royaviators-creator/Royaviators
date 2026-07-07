@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/LOGO.jpeg";
@@ -5,10 +8,41 @@ import { navItems } from "@/lib/content";
 import { siteConfig, strategySessionHref } from "@/lib/site";
 
 export function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+
+  function closeMenu() {
+    setIsMenuOpen(false);
+  }
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    }
+
+    function handlePointerDown(event: PointerEvent) {
+      if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
+        closeMenu();
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("pointerdown", handlePointerDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("pointerdown", handlePointerDown);
+    };
+  }, [isMenuOpen]);
+
   return (
-    <header className="site-header">
+    <header className="site-header" ref={headerRef}>
       <div className="container header-inner">
-        <Link href="/" className="brand" aria-label={`${siteConfig.name} home`}>
+        <Link href="/" className="brand" aria-label={`${siteConfig.name} home`} onClick={closeMenu}>
           <Image
             className="brand-mark"
             src={logo}
@@ -31,7 +65,37 @@ export function Header() {
         <a className="btn btn-primary header-cta" href={strategySessionHref}>
           {siteConfig.cta.strategySession.label}
         </a>
+
+        <button
+          className="mobile-menu-toggle"
+          type="button"
+          aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-navigation"
+          onClick={() => setIsMenuOpen((open) => !open)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
       </div>
+
+      <nav
+        id="mobile-navigation"
+        className={`mobile-nav ${isMenuOpen ? "is-open" : ""}`}
+        aria-label="Mobile navigation"
+      >
+        <div className="container mobile-nav-inner">
+          {navItems.map((item) => (
+            <a key={item.href} href={item.href} onClick={closeMenu}>
+              {item.label}
+            </a>
+          ))}
+          <a className="btn btn-primary mobile-nav-cta" href={strategySessionHref} onClick={closeMenu}>
+            {siteConfig.cta.strategySession.label}
+          </a>
+        </div>
+      </nav>
     </header>
   );
 }
