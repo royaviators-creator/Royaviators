@@ -7,7 +7,7 @@ import {
   ContactCTA,
   ImpactOS,
   Industries,
-  Products,
+  PlatformEditions,
   Services,
   TrustedPartner,
   WhyRoyaviators,
@@ -25,7 +25,7 @@ export default function Home() {
       <Industries />
       <Approach />
       <WhyRoyaviators />
-      <Products />
+      <PlatformEditions />
       <ContactCTA />
       <Footer />
     </main>
