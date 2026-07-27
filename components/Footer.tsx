@@ -11,6 +11,13 @@ export function Footer() {
             {siteConfig.name}
           </Link>
           <p>{siteConfig.footerDescription}</p>
+          <div className="footer-contact" aria-label="Company contact information">
+            <a href={contactHref}>{siteConfig.contact.email}</a>
+            <span>{siteConfig.contact.location}</span>
+            <span>{siteConfig.contact.responseTime}</span>
+            <span>KvK {siteConfig.contact.kvk}</span>
+            <span>VAT {siteConfig.contact.vat}</span>
+          </div>
         </div>
         <nav className="footer-nav" aria-label="Footer navigation">
           {navItems.map((item) => (
@@ -18,7 +25,6 @@ export function Footer() {
               {item.label}
             </a>
           ))}
-          <a href={contactHref}>{siteConfig.cta.contact.label}</a>
         </nav>
       </div>
     </footer>
