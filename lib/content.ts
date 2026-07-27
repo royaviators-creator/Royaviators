@@ -15,11 +15,12 @@ import {
 
 export const navItems = [
   { label: "Solutions", href: "#solutions" },
-  { label: "ImpactOS", href: "#impactos" },
   { label: "Services", href: "#services" },
+  { label: "ImpactOS", href: "#impactos" },
   { label: "Industries", href: "#industries" },
   { label: "About", href: "#about" },
   { label: "Editions", href: "#editions" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export const challenges = [
