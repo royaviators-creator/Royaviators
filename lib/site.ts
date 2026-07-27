@@ -9,6 +9,7 @@ export const siteConfig = {
   openGraphAlt: "Royaviators impact systems consultancy",
   contact: {
     email: "hello@royaviators.com",
+    type: "Consulting inquiries",
     location: "Utrecht, The Netherlands",
     responseTime: "Within one business day",
     linkedinLabel: "Connect on LinkedIn",
