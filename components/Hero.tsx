@@ -8,7 +8,7 @@ export function Hero() {
           <p className="eyebrow">{siteConfig.tagline}</p>
           <h1>Turn complexity into measurable impact.</h1>
           <p className="hero-subtitle">
-            Royaviators helps aviation, tourism, climate, ocean, public sector, and mission-driven organizations improve operations, knowledge, and decision-making through connected systems built for lasting impact.
+            Royaviators helps organizations operate with greater clarity, strengthen institutional knowledge, and make better decisions through connected systems designed for measurable, lasting impact.
           </p>
           <div className="hero-actions">
             <a className="btn btn-primary" href={strategySessionHref}>
