@@ -174,8 +174,10 @@ export function ContactCTA() {
     <section id="contact" className="section final-cta">
       <div className="container final-cta-card">
         <p className="eyebrow">Start the conversation</p>
-        <h2>The organizations creating the greatest impact will redesign how they work.</h2>
-        <p>Let’s explore how strategy, connected knowledge, automation, data, and carefully selected intelligent technologies can create measurable value for your organization.</p>
+        <h2>Let’s build better systems together.</h2>
+        <p>
+          Whether you’re exploring organizational transformation, intelligent systems, or ImpactOS, we’d be happy to discuss your goals.
+        </p>
         <a className="btn btn-primary" href={strategySessionHref}>{siteConfig.cta.strategySession.label}</a>
       </div>
     </section>
