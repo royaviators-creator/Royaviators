@@ -1,5 +1,5 @@
 import { challenges, servicePillars, impactModules, industries, approach, platformEditions, proofPoints, comparison } from "@/lib/content";
-import { contactHref, siteConfig, strategySessionHref } from "@/lib/site";
+import { siteConfig, strategySessionHref } from "@/lib/site";
 
 function Intro({ kicker, title, text }: { kicker: string; title: string; text?: string }) {
   return (
@@ -170,44 +170,15 @@ export function PlatformEditions() {
 }
 
 export function ContactCTA() {
-  const { contact } = siteConfig;
-
   return (
     <section id="contact" className="section final-cta">
-      <div className="container contact-grid">
-        <div className="final-cta-card">
-          <p className="eyebrow">Start the conversation</p>
-          <h2>Let’s build better systems together.</h2>
-          <p>
-            Whether you’re exploring organizational transformation, intelligent systems, or ImpactOS, we’d be happy to discuss your goals.
-          </p>
-          <a className="btn btn-primary" href={strategySessionHref}>{siteConfig.cta.strategySession.label}</a>
-        </div>
-
-        <aside className="contact-details-card" aria-label="Royaviators contact information">
-          <div className="contact-detail">
-            <span>Email</span>
-            <a href={contactHref}>{contact.email}</a>
-          </div>
-          <div className="contact-detail">
-            <span>Location</span>
-            <strong>{contact.location}</strong>
-          </div>
-          <div className="contact-detail">
-            <span>Response time</span>
-            <strong>{contact.responseTime}</strong>
-          </div>
-          <div className="contact-detail">
-            <span>Company information</span>
-            <strong>{contact.companyName}</strong>
-            <small>Chamber of Commerce (KvK): {contact.kvk}</small>
-            <small>VAT (BTW): {contact.vat}</small>
-          </div>
-          <div className="contact-detail">
-            <span>Connect</span>
-            <a href={contact.linkedinHref} target="_blank" rel="noreferrer">{contact.linkedinLabel}</a>
-          </div>
-        </aside>
+      <div className="container final-cta-card">
+        <p className="eyebrow">Start the conversation</p>
+        <h2>Let’s build better systems together.</h2>
+        <p>
+          Whether you’re exploring organizational transformation, intelligent systems, or ImpactOS, we’d be happy to discuss your goals.
+        </p>
+        <a className="btn btn-primary" href={strategySessionHref}>{siteConfig.cta.strategySession.label}</a>
       </div>
     </section>
   );
