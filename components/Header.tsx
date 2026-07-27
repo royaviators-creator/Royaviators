@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { navItems } from "@/lib/content";
 import { siteConfig, strategySessionHref } from "@/lib/site";
@@ -41,7 +42,14 @@ export function Header() {
     <header className="site-header" ref={headerRef}>
       <div className="container header-inner">
         <Link href="/" className="brand" aria-label={`${siteConfig.name} home`} onClick={closeMenu}>
-          <span className="brand-mark" aria-hidden="true">R</span>
+          <Image
+            className="brand-mark"
+            src="/royaviators-logo.png"
+            alt={`${siteConfig.name} logo`}
+            width={40}
+            height={40}
+            priority
+          />
           <span>{siteConfig.name}</span>
         </Link>
 
