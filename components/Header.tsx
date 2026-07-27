@@ -44,7 +44,7 @@ export function Header() {
         <Link href="/" className="brand" aria-label={`${siteConfig.name} home`} onClick={closeMenu}>
           <Image
             className="brand-mark"
-            src="/royaviators-logo.png"
+            src="/royaviators-logo-final.png"
             alt={`${siteConfig.name} logo`}
             width={40}
             height={40}
