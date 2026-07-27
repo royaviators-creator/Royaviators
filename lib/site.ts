@@ -9,7 +9,13 @@ export const siteConfig = {
   openGraphAlt: "Royaviators impact systems consultancy",
   contact: {
     email: "hello@royaviators.com",
-    type: "Consulting inquiries",
+    location: "Utrecht, The Netherlands",
+    responseTime: "Within one business day",
+    linkedinLabel: "Connect on LinkedIn",
+    linkedinHref: "https://www.linkedin.com/company/royaviators/",
+    companyName: "Royaviators",
+    kvk: "97129550",
+    vat: "NL005250674B79",
   },
   cta: {
     strategySession: {
